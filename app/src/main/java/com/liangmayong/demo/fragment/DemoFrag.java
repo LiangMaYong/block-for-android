@@ -12,19 +12,12 @@ import com.liangmayong.androidblock.base.BlockFragment;
  * Created by 007 on 2016/7/4.
  */
 public class DemoFrag extends BlockFragment {
-    TextView textView;
+    private TextView textView;
 
     @Override
     protected void initViews(View containerView, RelativeLayout rootView) {
         textView = (TextView) containerView.findViewById(R.id.text);
-        textView.setText("new DemoFrag1");
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView.setText("open DemoFrag2");
-                open(new DemoFrag2());
-            }
-        });
+        textView.setText("Page1");
     }
 
     @Override
@@ -34,6 +27,18 @@ public class DemoFrag extends BlockFragment {
 
     @Override
     protected void initActionBar(ActionBarController actionBarController) {
-        actionBarController.title().text("Demo");
+        actionBarController.title().text("Page1");
+        actionBarController.left().text("返回").clicked(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                close();
+            }
+        });
+        actionBarController.right().text("Page2").clicked(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                open(new DemoFrag2());
+            }
+        });
     }
 }
