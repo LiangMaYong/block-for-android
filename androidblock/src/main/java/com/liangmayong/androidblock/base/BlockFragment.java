@@ -330,6 +330,10 @@ public abstract class BlockFragment extends BaseFragment {
      * close this current Fragment
      */
     protected void close() {
+        if (System.currentTimeMillis() - LAST_ACTION < LAST_DELAY) {
+            return;
+        }
+        LAST_ACTION = System.currentTimeMillis();
         getBlockActivity().getStackManager().close(this, true);
         isFragmentClose = true;
     }
