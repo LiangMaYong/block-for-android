@@ -30,7 +30,7 @@ import com.liangmayong.androidblock.utils.GestureUtils.OnGestureListener;
 public abstract class BlockFragment extends BaseFragment {
 
     private static long LAST_ACTION = 0;
-    public static long LAST_DELAY = 200;
+    public static long LAST_DELAY = 500;
 
     public BlockFragment() {
     }
