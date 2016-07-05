@@ -492,7 +492,7 @@ public abstract class BlockFragment extends BaseFragment {
      */
     protected abstract void initActionBar(ActionBarController actionBarController);
 
-    private Presenter<?> presenter;
+    private Presenter<? extends BlockFragment> presenter;
 
     @Override
     public void onClosed() {
@@ -507,7 +507,7 @@ public abstract class BlockFragment extends BaseFragment {
      *
      * @return presenter
      */
-    public Presenter<?> getPresenter() {
+    public Presenter<? extends BlockFragment> getPresenter() {
         return presenter;
     }
 
@@ -516,7 +516,7 @@ public abstract class BlockFragment extends BaseFragment {
      *
      * @param presenter presenter
      */
-    protected void setPersenter(Presenter<?> presenter) {
+    protected void setPersenter(Presenter<? extends BlockFragment> presenter) {
         if (presenter == null) {
             return;
         }
