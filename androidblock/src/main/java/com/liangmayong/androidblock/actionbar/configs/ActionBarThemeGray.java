@@ -12,7 +12,7 @@ public class ActionBarThemeGray extends ActionBarTheme {
 
 	@Override
 	public void onAttachActionBar(ActionBar actionBar) {
-		setBackgroundColor(0xff333333);
+		setBackgroundColor(0xff9e9e9e);
 		setTitleColor(0xffffffff);
 		setSubTitleColor(0xffffffff);
 		setActionItemPadding(10);

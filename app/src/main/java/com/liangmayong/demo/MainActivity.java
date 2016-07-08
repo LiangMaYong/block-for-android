@@ -11,8 +11,4 @@ public class MainActivity extends BlockActivity {
         return new DemoFrag();
     }
 
-    @Override
-    public boolean isShowActionBar() {
-        return  true;
-    }
 }

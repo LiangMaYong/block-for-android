@@ -166,7 +166,7 @@ public abstract class BlockFragment extends BaseFragment {
      * @return true or false
      */
     public boolean isShowActionBar() {
-        return getBlockActivity().isShowActionBar();
+        return getBlockActivity().isDefaultShowActionBar();
     }
 
     /**

@@ -33,11 +33,18 @@ public interface IBlockActivity {
     public void initViews(View rootView);
 
     /**
+     * isDefaultShowActionBar
+     *
+     * @return true or false
+     */
+    public boolean isDefaultShowActionBar();
+
+    /**
      * isShowActionBar
      *
      * @return true or false
      */
-    public boolean isShowActionBar();
+    public int getActionBarShadowColor();
 
     /**
      * getRootView

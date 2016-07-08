@@ -1,55 +1,29 @@
-# android-block
+# block-for-android
 this is android block framework
 
 ## gradle
 ```
 dependencies {
-    compile 'com.liangmayong:androidblock:0.7.5'
+    compile 'com.liangmayong:androidblock:1.0.0'
 }
 ```
 ## Extends BlockActivity
 ```
-package com.liangmayong.demo;
-
-import com.liangmayong.androidblock.base.BlockActivity;
-import com.liangmayong.androidblock.base.BlockFragment;
-import com.liangmayong.demo.fragment.DemoFrag;
-
 public class MainActivity extends BlockActivity {
-
     @Override
     public BlockFragment getFristFragment() {
         return new DemoFrag();
-    }
-
-    @Override
-    public boolean isShowActionBar() {
-        return  true;
     }
 }
 ```
 ## Extends BlockFragment
 ```
-package com.liangmayong.demo.fragment;
-
-import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
-import com.liangmayong.demo.R;
-import com.liangmayong.androidblock.actionbar.ActionBarController;
-import com.liangmayong.androidblock.base.BlockFragment;
-
-/**
- * Created by 007 on 2016/7/5.
- */
 public class DemoFrag extends BlockFragment {
-    private TextView textView;
 
+    private TextView textView;
     @Override
     protected void initViews(View containerView, RelativeLayout rootView) {
-        textView = (TextView) containerView.findViewById(R.id.text);
-        textView.setText("Page1");
+        // init views
     }
 
     @Override
@@ -61,42 +35,35 @@ public class DemoFrag extends BlockFragment {
     @Override
     protected void initActionBar(ActionBarController actionBarController) {
         //init actionbar
-        actionBarController.title().text("Page1");
-        actionBarController.left().text("返回").clicked(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //close this fragment
-                close();
-            }
-        });
-        actionBarController.right().text("Page2").clicked(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //open fragment
-                open(new DemoFrag2());
-            }
-        });
     }
 }
 ```
 
-##技术交流
-交流：QQ群297798093
+##Technical exchange
+QQGroup：297798093
 
 email：ibeam@qq.com
 ##License
 ```
-Copyright 2016 LiangMaYong
+The MIT License (MIT)
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+Copyright (c) 2016 LiangMaYong
 
-   http://www.apache.org/licenses/LICENSE-2.0
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 ```

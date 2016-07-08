@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import com.liangmayong.androidblock.BlockConstant;
 import com.liangmayong.androidblock.actionbar.ActionBar;
 import com.liangmayong.androidblock.actionbar.ActionBarController;
+import com.liangmayong.androidblock.actionbar.ShadowLayout;
 import com.liangmayong.androidblock.actionbar.configs.ActionBarTheme;
 import com.liangmayong.androidblock.base.interfaces.IBlockActivity;
 import com.liangmayong.androidblock.base.stack.StackManager;
@@ -51,8 +52,13 @@ public abstract class BlockActivity extends FragmentActivity implements IBlockAc
     }
 
     @Override
-    public boolean isShowActionBar() {
+    public boolean isDefaultShowActionBar() {
         return true;
+    }
+
+    @Override
+    public int getActionBarShadowColor() {
+        return 0x30757575;
     }
 
     public RelativeLayout getRootView() {
@@ -82,13 +88,16 @@ public abstract class BlockActivity extends FragmentActivity implements IBlockAc
         frameView.setId(BlockConstant.FRAGMENT_ID);
         frameView.setBackgroundColor(backgroundColor);
         rootView.addView(frameView);
+        ShadowLayout layout = new ShadowLayout(this);
+        layout.setShadowColor(getActionBarShadowColor());
         actionBar = new ActionBar(this);
-        rootView.addView(actionBar);
+        layout.addView(actionBar);
+        rootView.addView(layout);
         ActionBarTheme config = getActionBarTheme();
         if (config != null) {
             actionBar.setActionConfig(config);
         }
-        if (!isShowActionBar()) {
+        if (!isDefaultShowActionBar()) {
             actionBar.setVisibility(View.GONE);
         }
         setContentView(rootView);
