@@ -1,6 +1,8 @@
 # block-for-android
 this is android block framework
 
+Welcome Star and [Issues](https://github.com/LiangMaYong/block-for-android/issues)
+
 ## gradle
 ```
 dependencies {
