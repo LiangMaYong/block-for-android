@@ -26,7 +26,7 @@ public abstract class Presenter<V> {
      * attach
      */
     public void attach() {
-        attach();
+       // attach();
     }
 
     /**
