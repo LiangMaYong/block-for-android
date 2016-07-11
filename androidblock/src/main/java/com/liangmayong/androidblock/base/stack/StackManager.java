@@ -59,7 +59,9 @@ public class StackManager implements ICloseFragment {
     public Bundle getResult(int resultCode) {
         synchronized (resultMap) {
             if (!resultMap.isEmpty() && resultMap.containsKey(resultCode)) {
-                return resultMap.get(resultCode);
+                Bundle bundle = resultMap.get(resultCode);
+                resultMap.remove(resultCode);
+                return bundle;
             }
         }
         return null;

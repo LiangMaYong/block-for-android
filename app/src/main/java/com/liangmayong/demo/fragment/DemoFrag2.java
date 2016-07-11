@@ -21,6 +21,11 @@ public class DemoFrag2 extends BlockFragment {
     }
 
     @Override
+    public boolean isShowActionBar() {
+        return  false;
+    }
+
+    @Override
     protected int getContaierViewId() {
         return R.layout.activity_main2;
     }

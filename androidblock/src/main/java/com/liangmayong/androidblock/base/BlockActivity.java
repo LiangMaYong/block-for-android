@@ -1,17 +1,7 @@
 package com.liangmayong.androidblock.base;
 
-import java.lang.reflect.Field;
-
-import com.liangmayong.androidblock.BlockConstant;
-import com.liangmayong.androidblock.actionbar.ActionBar;
-import com.liangmayong.androidblock.actionbar.ActionBarController;
-import com.liangmayong.androidblock.actionbar.ShadowLayout;
-import com.liangmayong.androidblock.actionbar.configs.ActionBarTheme;
-import com.liangmayong.androidblock.base.interfaces.IBlockActivity;
-import com.liangmayong.androidblock.base.stack.StackManager;
-import com.liangmayong.androidblock.utils.ToastUtils;
-
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,9 +12,20 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.liangmayong.androidblock.BlockConstant;
+import com.liangmayong.androidblock.actionbar.ActionBar;
+import com.liangmayong.androidblock.actionbar.ActionBarController;
+import com.liangmayong.androidblock.actionbar.configs.ActionBarTheme;
+import com.liangmayong.androidblock.base.interfaces.IBlockActivity;
+import com.liangmayong.androidblock.base.stack.StackManager;
+import com.liangmayong.androidblock.utils.ToastUtils;
+
+import java.lang.reflect.Field;
 
 /**
  * BlockActivity
@@ -88,11 +89,8 @@ public abstract class BlockActivity extends FragmentActivity implements IBlockAc
         frameView.setId(BlockConstant.FRAGMENT_ID);
         frameView.setBackgroundColor(backgroundColor);
         rootView.addView(frameView);
-        ShadowLayout layout = new ShadowLayout(this);
-        layout.setShadowColor(getActionBarShadowColor());
         actionBar = new ActionBar(this);
-        layout.addView(actionBar);
-        rootView.addView(layout);
+        rootView.addView(actionBar);
         ActionBarTheme config = getActionBarTheme();
         if (config != null) {
             actionBar.setActionConfig(config);
@@ -116,6 +114,7 @@ public abstract class BlockActivity extends FragmentActivity implements IBlockAc
         }
         initViews(rootView);
         initFragmentAnims();
+        hiddenKeyboard();
         onActivityCreate(savedInstanceState);
     }
 
@@ -289,6 +288,18 @@ public abstract class BlockActivity extends FragmentActivity implements IBlockAc
             duration = 500;
         }
         ToastUtils.showToast(this, text, duration);
+    }
+
+    private void hiddenKeyboard() {
+        if (getRootView() == null) return;
+        getRootView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InputMethodManager imm = (InputMethodManager)
+                        BlockActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+            }
+        });
     }
 
 }
