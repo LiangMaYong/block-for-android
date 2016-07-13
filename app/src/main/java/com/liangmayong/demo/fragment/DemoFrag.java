@@ -38,6 +38,7 @@ public class DemoFrag extends BlockFragment {
             @Override
             public void onClick(View v) {
                 open(new DemoFrag2());
+                // closeAndOpen(new DemoFrag2());
             }
         });
     }

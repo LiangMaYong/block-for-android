@@ -258,6 +258,15 @@ public abstract class BlockFragment extends BaseFragment {
     }
 
     /**
+     * closeAndOpen
+     *
+     * @param fragment fragment
+     */
+    protected void closeAndOpen(BlockFragment fragment) {
+        closeAndOpen(fragment, null);
+    }
+
+    /**
      * closeAndOpen fragment
      *
      * @param fragment fragment
@@ -344,9 +353,9 @@ public abstract class BlockFragment extends BaseFragment {
      * @param fragment the specified fragment
      */
     protected void finish(BlockFragment fragment) {
-        if (System.currentTimeMillis() - LAST_ACTION < LAST_DELAY) {
-            return;
-        }
+//        if (System.currentTimeMillis() - LAST_ACTION < LAST_DELAY) {
+//            return;
+//        }
         LAST_ACTION = System.currentTimeMillis();
         getBlockActivity().getStackManager().close(fragment, false);
     }
