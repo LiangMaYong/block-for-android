@@ -1,1 +1,1 @@
-include ':app', ':androidblock', ':androidblock-support'
+include ':app', ':androidblock'

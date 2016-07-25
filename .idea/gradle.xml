@@ -9,7 +9,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/androidblock" />
-            <option value="$PROJECT_DIR$/androidblock-support" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
@@ -17,7 +16,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/androidblock" />
-            <option value="$PROJECT_DIR$/androidblock-support" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
