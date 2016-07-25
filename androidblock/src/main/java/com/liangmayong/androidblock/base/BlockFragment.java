@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
@@ -37,6 +38,23 @@ public abstract class BlockFragment extends BaseFragment {
 
     private BlockFragment(Fragment fragment) {
         super(fragment);
+    }
+
+    private void hiddenKeyboard() {
+        if (getRootView() == null) return;
+        getRootView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InputMethodManager imm = (InputMethodManager)
+                        getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+            }
+        });
+    }
+
+
+    public boolean isTouchHiddenKeyboard() {
+        return false;
     }
 
     /**
@@ -149,6 +167,9 @@ public abstract class BlockFragment extends BaseFragment {
         isFragmentClose = false;
         getBlockActivity().onFragmentCreateView(this, containerView);
         initViews(containerView, layout);
+        if (isTouchHiddenKeyboard()) {
+            hiddenKeyboard();
+        }
         return layout;
     }
 

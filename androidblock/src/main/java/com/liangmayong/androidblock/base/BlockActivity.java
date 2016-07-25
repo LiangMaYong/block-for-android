@@ -114,7 +114,6 @@ public abstract class BlockActivity extends FragmentActivity implements IBlockAc
         }
         initViews(rootView);
         initFragmentAnims();
-        hiddenKeyboard();
         onActivityCreate(savedInstanceState);
     }
 
@@ -141,6 +140,7 @@ public abstract class BlockActivity extends FragmentActivity implements IBlockAc
         }
         return actionBar.getController();
     }
+
 
     @Override
     public ActionBar getBlockActionBar() {
@@ -290,16 +290,5 @@ public abstract class BlockActivity extends FragmentActivity implements IBlockAc
         ToastUtils.showToast(this, text, duration);
     }
 
-    private void hiddenKeyboard() {
-        if (getRootView() == null) return;
-        getRootView().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                InputMethodManager imm = (InputMethodManager)
-                        BlockActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-            }
-        });
-    }
 
 }
