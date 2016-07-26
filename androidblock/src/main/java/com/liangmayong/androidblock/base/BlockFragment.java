@@ -40,9 +40,9 @@ public abstract class BlockFragment extends BaseFragment {
         super(fragment);
     }
 
-    private void hiddenKeyboard() {
-        if (getRootView() == null) return;
-        getRootView().setOnClickListener(new View.OnClickListener() {
+    protected void hiddenKeyboard(View view) {
+        if (view == null) return;
+        view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 InputMethodManager imm = (InputMethodManager)
@@ -151,11 +151,11 @@ public abstract class BlockFragment extends BaseFragment {
     @Override
     public final View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.context = inflater.getContext();
-        RelativeLayout layout = new RelativeLayout(inflater.getContext());
-        layout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+        rootView = new RelativeLayout(inflater.getContext());
+        rootView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
         FrameLayout frameLayout = new FrameLayout(inflater.getContext());
         frameLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-        layout.addView(frameLayout);
+        rootView.addView(frameLayout);
         containerView = getContaierView(inflater, frameLayout, savedInstanceState);
         getActionBarController().reset(isShowActionBar());
         initActionBar(getActionBarController());
@@ -166,11 +166,11 @@ public abstract class BlockFragment extends BaseFragment {
         isFragmentVisible = true;
         isFragmentClose = false;
         getBlockActivity().onFragmentCreateView(this, containerView);
-        initViews(containerView, layout);
+        initViews(containerView, rootView);
         if (isTouchHiddenKeyboard()) {
-            hiddenKeyboard();
+            hiddenKeyboard(rootView);
         }
-        return layout;
+        return rootView;
     }
 
     /**

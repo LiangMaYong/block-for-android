@@ -6,7 +6,7 @@ Welcome Star and [Issues](https://github.com/LiangMaYong/block-for-android/issue
 ## gradle
 ```
 dependencies {
-    compile 'com.liangmayong:androidblock:1.0.1'
+    compile 'com.liangmayong:androidblock:1.0.2'
 }
 ```
 ## Extends BlockActivity

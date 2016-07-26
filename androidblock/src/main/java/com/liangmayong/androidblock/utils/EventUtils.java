@@ -239,7 +239,7 @@ public class EventUtils {
     /**
      * weak list
      *
-     * @param <E>
+     * @param <E> e
      * @author LiangMaYong
      * @version 1.0
      */
